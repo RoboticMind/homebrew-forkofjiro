@@ -29,11 +29,11 @@ jobs:
           mkdir -p $(brew --repo)/Library/Taps/git-jiro
           ln -s $GITHUB_WORKSPACE $(brew --repo)/Library/Taps/git-jiro/homebrew-jiro
           brew tap --repair
-          brew install --only-dependencies roboticmind/forkofjiro/gridcoin
+          brew install --only-dependencies roboticmind/forkofjiro/gridcointestfork
           
       - name: install gridcoin
         run: |
-          brew install roboticmind/forkofjiro/gridcoin
+          brew install roboticmind/forkofjiro/gridcointestfork
 
       - name: build gridcoin dmg
         run: |
