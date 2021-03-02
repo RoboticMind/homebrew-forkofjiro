@@ -1,4 +1,4 @@
-class Gridcoin < Formula
+class Gridcointestfork < Formula
   desc "OS X client (GUI and CLI)"
   homepage "https://gridcoin.us/"
   license "MIT"
