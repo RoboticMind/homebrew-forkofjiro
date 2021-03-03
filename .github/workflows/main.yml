@@ -23,8 +23,7 @@ jobs:
 
       - name: Select Xcode Version
         run: |
-          sudo xcode-select -s /Applications/Xcode_10.3.app
-          sudo rm /Applications/Xcode_12.4.app
+            SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
           
       - name: install-homebrew
         uses: Homebrew/actions/setup-homebrew@master
