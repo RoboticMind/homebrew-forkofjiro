@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -20,28 +19,26 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-          
+
       - name: install-homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: setup the Tap
         run: |
           mkdir -p $(brew --repo)/Library/Taps/git-jiro
-          ln -s $GITHUB_WORKSPACE $(brew --repo)/Library/Taps/git-jiro/homebrew-jiro
+          ln -s $GITHUB_WORKSPACE $(brew --repo)/Library/Taps/RoboticMind/homebrew-forkofjiro
           brew tap --repair
           brew install --only-dependencies roboticmind/forkofjiro/gridcointestfork
           
       - name: install gridcoin
         run: |
           brew install roboticmind/forkofjiro/gridcointestfork
-
       - name: build gridcoin dmg
         run: |
           cd `brew --prefix`/Cellar/gridcoin/* && `brew --prefix`/Cellar/qt@5/*/bin/macdeployqt gridcoinresearch.app -verbose=2 -dmg
           pwd
           ls
           cp gridcoinresearch.dmg $GITHUB_WORKSPACE/gridcoinresearch_bigsur.dmg
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
