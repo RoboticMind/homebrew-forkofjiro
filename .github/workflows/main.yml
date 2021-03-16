@@ -20,10 +20,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Select Xcode Version
-        run: |
-            SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
           
       - name: install-homebrew
         uses: Homebrew/actions/setup-homebrew@master
