@@ -25,6 +25,7 @@ jobs:
 
       - name: setup the Tap
         run: |
+          echo "test: ${{ gihub.sha }}"
           mkdir -p $(brew --repo)/Library/Taps/git-jiro
           ln -s $GITHUB_WORKSPACE $(brew --repo)/Library/Taps/RoboticMind/homebrew-forkofjiro
           brew tap --repair
@@ -45,8 +46,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref }} ${{ gihub.sha }}
+          release_name: Release ${{ github.ref }} ${{ gihub.sha }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
