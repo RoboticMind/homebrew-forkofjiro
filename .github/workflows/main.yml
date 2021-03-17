@@ -25,8 +25,8 @@ jobs:
 
       - name: setup the Tap
         run: |
-          echo "test: ${GITHUB_SHA}"
-          echo "test2: ${{ github.ref }}_${GITHUB_SHA}"
+          echo "test: ${{ github.sha }}}"
+          echo "test2: ${{ github.ref }}_${{ github.sha }}"
           mkdir -p $(brew --repo)/Library/Taps/git-jiro
           ln -s $GITHUB_WORKSPACE $(brew --repo)/Library/Taps/RoboticMind/homebrew-forkofjiro
           brew tap --repair
@@ -47,7 +47,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}_${GITHUB_SHA}
+          tag_name: ${{ github.ref }}_${{ github.sha }}
           release_name: Release ${{ github.ref }}_${GITHUB_SHA}
           draft: false
           prerelease: false
