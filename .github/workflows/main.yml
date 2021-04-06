@@ -37,10 +37,10 @@ jobs:
           brew install roboticmind/forkofjiro/gridcointestfork
       - name: build gridcoin dmg
         run: |
-          cd `brew --prefix`/Cellar/gridcointestfork/* && `brew --prefix`/Cellar/qt@5/*/bin/macdeployqt gridcoinresearch.app -verbose=2 -dmg
+          cd `brew --prefix`/Cellar/gridcointestfork/* && `brew --prefix`/Cellar/qt@5/*/bin/macdeployqt Gridcoin.app -verbose=2 -dmg
           pwd
           ls
-          cp gridcoinresearch.dmg $GITHUB_WORKSPACE/gridcoinresearch_bigsur.dmg
+          cp Gridcoin.dmg $GITHUB_WORKSPACE/gridcoinresearch_bigsur.dmg
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
